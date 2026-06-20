@@ -5,6 +5,10 @@ import { env } from './config/env.js';
 import compression from "compression";
 import { errorHandler } from './middleware/errorHandler.js';
 
+import { ticketRouter } from './routes/tickets.js';
+import {agentRouter} from './routes/agents.js';
+import { dashboardRouter } from './routes/dashboard.js';
+
 
 
 
@@ -20,6 +24,9 @@ app.get('/health', (_req, res) => {
   res.json({ ok: true });
 });
 
+app.use('/api/tickets', ticketRouter);
+app.use('/api/dashboard', dashboardRouter);
+app.use('/api/agents', agentRouter);
 
 
 app.use((_req, res) => {
