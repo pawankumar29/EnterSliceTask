@@ -24,6 +24,15 @@ export const env = {
       process.env.DB_PASSWORD ||
       process.env.MYSQL_PASSWORD ||
       "support_password",
+  },
+
+   sla: {
+    windowsHours: {
+      low: numberFromEnv("SLA_LOW_HOURS", 72),
+      medium: numberFromEnv("SLA_MEDIUM_HOURS", 24),
+      high: numberFromEnv("SLA_HIGH_HOURS", 8),
+      urgent: numberFromEnv("SLA_URGENT_HOURS", 2),
+    },
   }
 
 };

@@ -3,9 +3,8 @@ FROM node:22-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+COPY index.html ./index.html
 COPY src ./src
 
-EXPOSE 4000
-
-CMD ["npx", "pm2-runtime", "start", "src/server.js"]
-
+EXPOSE 5173
+CMD ["npm", "run", "dev"]
