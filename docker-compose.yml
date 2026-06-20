@@ -56,5 +56,21 @@ services:
       mysql:
         condition: service_healthy
 
+  sla-cron:
+    build: ./cron-job
+    container_name: enterslice_sla_cron
+    restart: unless-stopped
+    environment:
+      DB_HOST: ${DB_HOST:-mysql}
+      DB_PORT: ${DB_PORT:-3306}
+      DB_USER: ${MYSQL_USER:-support_user}
+      DB_PASSWORD: ${MYSQL_PASSWORD:-support_password}
+      DB_NAME: ${MYSQL_DATABASE:-support_sla}
+      SLA_CRON_SCHEDULE: "${SLA_CRON_SCHEDULE:-*/5 * * * *}"
+      SLA_WARNING_RATIO: "${SLA_WARNING_RATIO:-0.2}"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
 volumes:
   mysql-data:

@@ -1,5 +1,8 @@
 import cron from "node-cron";
 import { env } from "../config/env.js";
+import { runSlaCheck } from "../services/slaEngine.js";
+
+
 
 let running = false;
 
@@ -16,11 +19,15 @@ export const startSlaCron = () => {
     }
     running = true;
     try {
-        console.log("cron verify");
+      await runSlaCheck();
     } catch (error) {
       console.error("SLA CHECK failed", error);
     } finally {
       running = false;
     }
   });
+
+   runSlaCheck().catch((error) =>
+    console.error("Initial SLA CHECK failed", error),
+  );
 };
