@@ -42,6 +42,11 @@ button:disabled {
   opacity: 0.5;
 }
 
+.new-ticket form button[type="submit"]{
+   justify-self: center;
+   width:fit-content
+}
+
 button.primary {
   background: #1c6f66;
   border-color: #1c6f66;

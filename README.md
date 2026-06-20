@@ -111,3 +111,5 @@ Equivalent legacy commands are `docker-compose up --build`, `docker-compose logs
 - Use a messaging queue (e.g., kafka or RabbitMQ) to decouple Db Write operations
 
 - Add simple start/stop and maintenance scripts  (Bash and PowerShell) that wrap `docker compose` commands and common tasks (migrations, seed). This makes local development and CI easier to manage.
+
+- Interactive and bettar ui
